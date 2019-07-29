@@ -75,9 +75,9 @@ class BannerController extends Controller
         $result = $this->banner->save(request()->all());
 
         if ($result)
-            session()->flash('success', trans('admin::app.appsettings.banners.created-success'));
+            session()->flash('success', trans('admin::app.appsettings.banner.created-success'));
         else
-            session()->flash('success', trans('admin::app.appsettings.banners.created-fail'));
+            session()->flash('success', trans('admin::app.appsettings.banner.created-fail'));
 
         return redirect()->route($this->_config['redirect']);
     }
@@ -109,9 +109,9 @@ class BannerController extends Controller
         $result = $this->banner->updateItem(request()->all(), $id);
 
         if ($result) {
-            session()->flash('success', trans('admin::app.appsettings.banners.update-success'));
+            session()->flash('success', trans('admin::app.appsettings.banner.update-success'));
         } else {
-            session()->flash('error', trans('admin::app.appsettings.banners.update-fail'));
+            session()->flash('error', trans('admin::app.appsettings.banner.update-fail'));
         }
 
         return redirect()->route($this->_config['redirect']);

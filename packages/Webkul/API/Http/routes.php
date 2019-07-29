@@ -20,6 +20,36 @@ Route::group(['prefix' => 'api'], function ($router) {
             'repository' => 'Webkul\Car\Repositories\CarRepository',
             'resource' => 'Webkul\API\Http\Resources\Catalog\Car'
         ]);
+
+        //TechnicalServices routes
+        Route::get('techservices', 'ResourceController@index')->defaults('_config', [
+            'repository' => 'Webkul\Core\Repositories\TechServiceRepository',
+            'resource' => 'Webkul\API\Http\Resources\Core\TechService'
+        ]);
+
+        //PaymentAccounts routes
+        Route::get('payments', 'ResourceController@index')->defaults('_config', [
+            'repository' => 'Webkul\Core\Repositories\PaymentRepository',
+            'resource' => 'Webkul\API\Http\Resources\Core\Payment'
+        ]);
+
+        //Contacts routes
+        Route::get('contacts', 'ResourceController@index')->defaults('_config', [
+            'repository' => 'Webkul\Core\Repositories\ContactRepository',
+            'resource' => 'Webkul\API\Http\Resources\Core\Contact'
+        ]);
+
+        //News routes
+        Route::get('news', 'ResourceController@index')->defaults('_config', [
+            'repository' => 'Webkul\Core\Repositories\NewsRepository',
+            'resource' => 'Webkul\API\Http\Resources\Core\News'
+        ]);
+
+        //EsseGroup routes
+        Route::get('essegroup', 'EsseGroupController@index')->defaults('_config', [
+            'repository' => 'Webkul\Core\Repositories\EsseGroupRepository',
+            'resource' => 'Webkul\API\Http\Resources\Core\EsseGroup'
+        ]);
         
         
         //Category routes

@@ -16,7 +16,7 @@ class CreateEsseGroupTable extends Migration
     {
         Schema::create('essegroup', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('content');
+            $table->string('content', 19000);
             $table->timestamps();
         });
     }

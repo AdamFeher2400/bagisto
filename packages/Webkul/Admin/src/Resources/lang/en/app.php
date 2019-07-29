@@ -885,7 +885,7 @@ return [
             'address' => 'Address',
             'tel' => 'Telephone',
             'fax' => 'Fax',
-            'domain' => 'Country',
+            'domain' => 'Domain',
             'email' => 'Email'
         ]
     ],
