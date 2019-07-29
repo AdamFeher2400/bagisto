@@ -205,6 +205,10 @@ class ProductRepository extends Repository
             if  (isset($data['categories'])) {
                 $product->categories()->sync($data['categories']);
             }
+            
+            if  (isset($data['cars'])) {
+                $product->cars()->sync($data['cars']);
+            }
 
             if (isset($data['up_sell'])) {
                 $product->up_sells()->sync($data['up_sell']);

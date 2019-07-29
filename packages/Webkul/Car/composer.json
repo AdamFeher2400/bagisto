@@ -1,0 +1,27 @@
+{
+    "name": "bagisto/laravel-car",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jitendra Singh",
+            "email": "jitendra@webkul.com"
+        }
+    ],
+    "require": {
+        "baum/baum": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webkul\\Car\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webkul\\Car\\Providers\\CarServiceProvider"
+            ],
+            "aliases": { }
+        }
+    },
+    "minimum-stability": "dev"
+}

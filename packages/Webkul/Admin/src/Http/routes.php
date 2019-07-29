@@ -271,6 +271,29 @@ Route::group(['middleware' => ['web']], function () {
 
                 Route::post('/categories/delete/{id}', 'Webkul\Category\Http\Controllers\CategoryController@destroy')->name('admin.catalog.categories.delete');
 
+                // Catalog Car Routes
+                Route::get('/cars', 'Webkul\Car\Http\Controllers\CarController@index')->defaults('_config', [
+                    'view' => 'admin::catalog.cars.index'
+                ])->name('admin.catalog.cars.index');
+
+                Route::get('/cars/create', 'Webkul\Car\Http\Controllers\CarController@create')->defaults('_config', [
+                    'view' => 'admin::catalog.cars.create'
+                ])->name('admin.catalog.cars.create');
+
+                Route::post('/cars/create', 'Webkul\Car\Http\Controllers\CarController@store')->defaults('_config', [
+                    'redirect' => 'admin.catalog.cars.index'
+                ])->name('admin.catalog.cars.store');
+
+                Route::get('/cars/edit/{id}', 'Webkul\Car\Http\Controllers\CarController@edit')->defaults('_config', [
+                    'view' => 'admin::catalog.cars.edit'
+                ])->name('admin.catalog.cars.edit');
+
+                Route::put('/cars/edit/{id}', 'Webkul\Car\Http\Controllers\CarController@update')->defaults('_config', [
+                    'redirect' => 'admin.catalog.cars.index'
+                ])->name('admin.catalog.cars.update');
+
+                Route::post('/cars/delete/{id}', 'Webkul\Car\Http\Controllers\CarController@destroy')->name('admin.catalog.cars.delete');
+
 
                 // Catalog Attribute Routes
                 Route::get('/attributes', 'Webkul\Attribute\Http\Controllers\AttributeController@index')->defaults('_config', [
@@ -675,6 +698,199 @@ Route::group(['middleware' => ['web']], function () {
 
                 Route::post('cart-rules/delete/{id}', 'Webkul\Discount\Http\Controllers\CartRuleController@destroy')->name('admin.cart-rule.delete');
             });
-        });
+
+            //banner index
+            Route::get('/banner','Webkul\Core\Http\Controllers\BannerController@index')->defaults('_config',[
+                'view' => 'admin::appsettings.banner.index'
+            ])->name('admin.banner.index');
+
+            //banner create show
+            Route::get('banner/create','Webkul\Core\Http\Controllers\BannerController@create')->defaults('_config',[
+                'view' => 'admin::appsettings.banner.create'
+            ])->name('admin.banner.create');
+
+            //banner create show
+            Route::post('banner/create','Webkul\Core\Http\Controllers\BannerController@store')->defaults('_config',[
+                'redirect' => 'admin.banner.index'
+            ])->name('admin.banner.store');
+
+            //banner edit show
+            Route::get('banner/edit/{id}','Webkul\Core\Http\Controllers\BannerController@edit')->defaults('_config',[
+                'view' => 'admin::appsettings.banner.edit'
+            ])->name('admin.banner.edit');
+
+            //banner edit update
+            Route::post('banner/edit/{id}','Webkul\Core\Http\Controllers\BannerController@update')->defaults('_config',[
+                'redirect' => 'admin.banner.index'
+            ])->name('admin.banner.update');
+
+            //banner a slider item
+            Route::post('banner/delete/{id}', 'Webkul\Core\Http\Controllers\BannerController@destroy')->name('admin.banner.delete');   
+            
+
+            //news index
+            Route::get('/news','Webkul\Core\Http\Controllers\NewsController@index')->defaults('_config',[
+                'view' => 'admin::appsettings.news.index'
+            ])->name('admin.news.index');
+
+            //news create show
+            Route::get('news/create','Webkul\Core\Http\Controllers\NewsController@create')->defaults('_config',[
+                'view' => 'admin::appsettings.news.create'
+            ])->name('admin.news.create');
+
+            //news create show
+            Route::post('news/create','Webkul\Core\Http\Controllers\NewsController@store')->defaults('_config',[
+                'redirect' => 'admin.news.index'
+            ])->name('admin.news.store');
+
+            //news edit show
+            Route::get('news/edit/{id}','Webkul\Core\Http\Controllers\NewsController@edit')->defaults('_config',[
+                'view' => 'admin::appsettings.news.edit'
+            ])->name('admin.news.edit');
+
+            //news edit update
+            Route::post('news/edit/{id}','Webkul\Core\Http\Controllers\NewsController@update')->defaults('_config',[
+                'redirect' => 'admin.news.index'
+            ])->name('admin.news.update');
+
+            //news a slider item
+            Route::post('news/delete/{id}', 'Webkul\Core\Http\Controllers\NewsController@destroy')->name('admin.news.delete');          
+
+
+            // essegroup index
+            Route::get('/essegroup','Webkul\Core\Http\Controllers\EsseGroupController@index')->defaults('_config',[
+                'view' => 'admin::appsettings.essegroup.index'
+            ])->name('admin.essegroup.index');
+            Route::post('essegroup/create','Webkul\Core\Http\Controllers\EsseGroupController@store')->defaults('_config',[
+                'redirect' => 'admin.essegroup.index'
+            ])->name('admin.essegroup.store');
+
+
+            //techservice index
+            Route::get('/techservice','Webkul\Core\Http\Controllers\TechServiceController@index')->defaults('_config',[
+                'view' => 'admin::appsettings.techservice.index'
+            ])->name('admin.techservice.index');
+
+            //techservice create show
+            Route::get('techservice/create','Webkul\Core\Http\Controllers\TechServiceController@create')->defaults('_config',[
+                'view' => 'admin::appsettings.techservice.create'
+            ])->name('admin.techservice.create');
+
+            //techservice create show
+            Route::post('techservice/create','Webkul\Core\Http\Controllers\TechServiceController@store')->defaults('_config',[
+                'redirect' => 'admin.techservice.index'
+            ])->name('admin.techservice.store');
+
+            //techservice edit show
+            Route::get('techservice/edit/{id}','Webkul\Core\Http\Controllers\TechServiceController@edit')->defaults('_config',[
+                'view' => 'admin::appsettings.techservice.edit'
+            ])->name('admin.techservice.edit');
+
+            //techservice edit update
+            Route::post('techservice/edit/{id}','Webkul\Core\Http\Controllers\TechServiceController@update')->defaults('_config',[
+                'redirect' => 'admin.techservice.index'
+            ])->name('admin.techservice.update');
+
+            //techservice a slider item
+            Route::post('techservice/delete/{id}', 'Webkul\Core\Http\Controllers\TechServiceController@destroy')->name('admin.techservice.delete');   
+
+            // essegroup index
+            Route::get('/essegroup','Webkul\Core\Http\Controllers\EsseGroupController@index')->defaults('_config',[
+                'view' => 'admin::appsettings.essegroup.index'
+            ])->name('admin.essegroup.index');
+            Route::post('essegroup/create','Webkul\Core\Http\Controllers\EsseGroupController@store')->defaults('_config',[
+                'redirect' => 'admin.essegroup.index'
+            ])->name('admin.essegroup.store');
+
+
+            //prodtechservice index
+            Route::get('/prodtechservice','Webkul\Core\Http\Controllers\ProdTechServiceController@index')->defaults('_config',[
+                'view' => 'admin::appsettings.prodtechservice.index'
+            ])->name('admin.prodtechservice.index');
+
+            //prodtechservice create show
+            Route::get('prodtechservice/create','Webkul\Core\Http\Controllers\ProdTechServiceController@create')->defaults('_config',[
+                'view' => 'admin::appsettings.prodtechservice.create'
+            ])->name('admin.prodtechservice.create');
+
+            //prodtechservice create show
+            Route::post('prodtechservice/create','Webkul\Core\Http\Controllers\ProdTechServiceController@store')->defaults('_config',[
+                'redirect' => 'admin.prodtechservice.index'
+            ])->name('admin.prodtechservice.store');
+
+            //prodtechservice edit show
+            Route::get('prodtechservice/edit/{id}','Webkul\Core\Http\Controllers\ProdTechServiceController@edit')->defaults('_config',[
+                'view' => 'admin::appsettings.prodtechservice.edit'
+            ])->name('admin.prodtechservice.edit');
+
+            //prodtechservice edit update
+            Route::post('prodtechservice/edit/{id}','Webkul\Core\Http\Controllers\ProdTechServiceController@update')->defaults('_config',[
+                'redirect' => 'admin.prodtechservice.index'
+            ])->name('admin.prodtechservice.update');
+
+            //prodtechservice a slider item
+            Route::post('prodtechservice/delete/{id}', 'Webkul\Core\Http\Controllers\ProdTechServiceController@destroy')->name('admin.prodtechservice.delete');   
+
+
+            //payment index
+            Route::get('/payment','Webkul\Core\Http\Controllers\PaymentController@index')->defaults('_config',[
+                'view' => 'admin::appsettings.payment.index'
+            ])->name('admin.payment.index');
+
+            //payment create show
+            Route::get('payment/create','Webkul\Core\Http\Controllers\PaymentController@create')->defaults('_config',[
+                'view' => 'admin::appsettings.payment.create'
+            ])->name('admin.payment.create');
+
+            //payment create show
+            Route::post('payment/create','Webkul\Core\Http\Controllers\PaymentController@store')->defaults('_config',[
+                'redirect' => 'admin.payment.index'
+            ])->name('admin.payment.store');
+
+            //payment edit show
+            Route::get('payment/edit/{id}','Webkul\Core\Http\Controllers\PaymentController@edit')->defaults('_config',[
+                'view' => 'admin::appsettings.payment.edit'
+            ])->name('admin.payment.edit');
+
+            //payment edit update
+            Route::post('payment/edit/{id}','Webkul\Core\Http\Controllers\PaymentController@update')->defaults('_config',[
+                'redirect' => 'admin.payment.index'
+            ])->name('admin.payment.update');
+
+            //payment a slider item
+            Route::post('payment/delete/{id}', 'Webkul\Core\Http\Controllers\PaymentController@destroy')->name('admin.payment.delete');   
+
+
+            //contact index
+            Route::get('/contact','Webkul\Core\Http\Controllers\ContactController@index')->defaults('_config',[
+                'view' => 'admin::appsettings.contact.index'
+            ])->name('admin.contact.index');
+
+            //contact create show
+            Route::get('contact/create','Webkul\Core\Http\Controllers\ContactController@create')->defaults('_config',[
+                'view' => 'admin::appsettings.contact.create'
+            ])->name('admin.contact.create');
+
+            //contact create show
+            Route::post('contact/create','Webkul\Core\Http\Controllers\ContactController@store')->defaults('_config',[
+                'redirect' => 'admin.contact.index'
+            ])->name('admin.contact.store');
+
+            //contact edit show
+            Route::get('contact/edit/{id}','Webkul\Core\Http\Controllers\ContactController@edit')->defaults('_config',[
+                'view' => 'admin::appsettings.contact.edit'
+            ])->name('admin.contact.edit');
+
+            //contact edit update
+            Route::post('contact/edit/{id}','Webkul\Core\Http\Controllers\ContactController@update')->defaults('_config',[
+                'redirect' => 'admin.contact.index'
+            ])->name('admin.contact.update');
+
+            //contact a slider item
+            Route::post('contact/delete/{id}', 'Webkul\Core\Http\Controllers\ContactController@destroy')->name('admin.contact.delete');  
+        });        
+
+
+        
     });
 });

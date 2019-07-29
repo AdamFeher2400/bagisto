@@ -34,6 +34,13 @@ class CreateProductsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
 
+        Schema::create('product_cars', function (Blueprint $table) {
+            $table->integer('product_id')->unsigned();
+            $table->integer('car_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
+        });
+
         Schema::create('product_relations', function (Blueprint $table) {
             $table->integer('parent_id')->unsigned();
             $table->integer('child_id')->unsigned();
@@ -73,5 +80,7 @@ class CreateProductsTable extends Migration
         Schema::dropIfExists('products');
 
         Schema::dropIfExists('product_categories');
+
+        Schema::dropIfExists('product_cars');
     }
 }

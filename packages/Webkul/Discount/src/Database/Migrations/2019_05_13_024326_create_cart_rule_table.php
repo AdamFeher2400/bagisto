@@ -30,8 +30,10 @@ class CreateCartRuleTable extends Migration
             $table->boolean('is_guest')->default(0);
             $table->boolean('use_coupon')->default(0);
             $table->integer('usage_limit')->unsigned()->default(0);
-            $table->json('conditions')->nullable();
-            $table->json('actions')->nullable();
+            // $table->json('conditions')->nullable();
+            // $table->json('actions')->nullable();
+            $table->text('conditions')->nullable();
+            $table->text('actions')->nullable();
             $table->boolean('end_other_rules')->default(0);
             $table->integer('priority')->unsigned()->default(0);
             $table->boolean('uses_attribute_conditions')->default(0);

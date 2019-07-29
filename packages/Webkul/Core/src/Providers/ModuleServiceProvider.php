@@ -7,6 +7,13 @@ use Konekt\Concord\BaseModuleServiceProvider;
 class ModuleServiceProvider extends BaseModuleServiceProvider
 {
     protected $models = [
+        \Webkul\Core\Models\Banner::class,
+        \Webkul\Core\Models\News::class,
+        \Webkul\Core\Models\EsseGroup::class,
+        \Webkul\Core\Models\TechService::class,
+        \Webkul\Core\Models\ProdTechService::class,
+        \Webkul\Core\Models\Payment::class,
+        \Webkul\Core\Models\Contact::class,
         \Webkul\Core\Models\Channel::class,
         \Webkul\Core\Models\CoreConfig::class,
         \Webkul\Core\Models\Country::class,

@@ -3,6 +3,7 @@
 namespace Webkul\Admin\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Webkul\Car\Database\Seeders\DatabaseSeeder as CarSeeder;
 use Webkul\Category\Database\Seeders\DatabaseSeeder as CategorySeeder;
 use Webkul\Attribute\Database\Seeders\DatabaseSeeder as AttributeSeeder;
 use Webkul\Core\Database\Seeders\DatabaseSeeder as CoreSeeder;
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(CarSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(InventorySeeder::class);
         $this->call(CoreSeeder::class);

@@ -173,6 +173,13 @@
                 {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.categories.after', ['product' => $product]) !!}
 
 
+                {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.cars.before', ['product' => $product]) !!}
+
+                @include ('admin::catalog.products.accordians.cars')
+
+                {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.cars.after', ['product' => $product]) !!}
+
+
                 {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.variations.before', ['product' => $product]) !!}
 
                 @include ('admin::catalog.products.accordians.variations')
@@ -188,27 +195,3 @@
         {!! view_render_event('bagisto.admin.catalog.product.edit.after', ['product' => $product]) !!}
     </div>
 @stop
-
-@push('scripts')
-    <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('#channel-switcher, #locale-switcher').on('change', function (e) {
-                $('#channel-switcher').val()
-                var query = '?channel=' + $('#channel-switcher').val() + '&locale=' + $('#locale-switcher').val();
-
-                window.location.href = "{{ route('admin.catalog.products.edit', $product->id)  }}" + query;
-            })
-
-            tinymce.init({
-                selector: 'textarea#description, textarea#short_description',
-                height: 200,
-                width: "100%",
-                plugins: 'image imagetools media wordcount save fullscreen code',
-                toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent  | removeformat | code',
-                image_advtab: true
-            });
-        });
-    </script>
-@endpush

@@ -5,6 +5,7 @@ namespace Webkul\Product\Models;
 use Illuminate\Database\Eloquent\Model;
 use Webkul\Attribute\Models\AttributeFamilyProxy;
 use Webkul\Category\Models\CategoryProxy;
+use Webkul\Car\Models\CarProxy;
 use Webkul\Attribute\Models\AttributeProxy;
 use Webkul\Inventory\Models\InventorySourceProxy;
 use Webkul\Product\Contracts\Product as ProductContract;
@@ -63,6 +64,14 @@ class Product extends Model implements ProductContract
     public function categories()
     {
         return $this->belongsToMany(CategoryProxy::modelClass(), 'product_categories');
+    }
+
+    /**
+     * The categories that belong to the product.
+     */
+    public function cars()
+    {
+        return $this->belongsToMany(CarProxy::modelClass(), 'product_cars');
     }
 
     /**

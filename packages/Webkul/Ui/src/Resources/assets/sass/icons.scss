@@ -33,6 +33,10 @@
     @extend %menu-properties;
     background-image: url("../images/Icon-Settings.svg");
 }
+.appsettings-icon {
+    @extend %menu-properties;
+    background-image: url("../images/Icon-AppSettings.svg");
+}
 
 .promotion-icon {
     @extend %menu-properties;
@@ -252,6 +256,10 @@
         background-image: url("../images/Icon-Settings-Active.svg");
     }
 
+    .appsettings-icon {
+        background-image: url("../images/Icon-AppSettings-Active.svg");
+    }
+
     .configuration-icon {
         background-image: url("../images/Icon-Configure-Active.svg");
     }
@@ -284,6 +292,10 @@
 
     &.settings-icon {
         background-image: url("../images/Icon-Settings-Active.svg");
+    }
+
+    &.appsettings-icon {
+        background-image: url("../images/Icon-AppSettings-Active.svg");
     }
 
     &.configuration-icon {

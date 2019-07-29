@@ -12,6 +12,7 @@
         "webkul/laravel-core": "dev-master",
         "webkul/laravel-product": "dev-master",
         "webkul/laravel-shop": "dev-master",
+        "webkul/laravel-car": "dev-master",
         "webkul/laravel-category": "dev-master",
         "webkul/laravel-tax": "dev-master",
         "webkul/laravel-inventory": "dev-master",

@@ -54,7 +54,7 @@ class CreateOrderItemsTable extends Migration
             $table->decimal('base_tax_amount_invoiced', 12, 4)->default(0)->nullable();
             $table->decimal('tax_amount_refunded', 12, 4)->default(0)->nullable();
             $table->decimal('base_tax_amount_refunded', 12, 4)->default(0)->nullable();
-            
+
             $table->integer('product_id')->unsigned()->nullable();
             $table->string('product_type')->nullable();
             $table->integer('order_id')->unsigned()->nullable();
@@ -62,7 +62,8 @@ class CreateOrderItemsTable extends Migration
             $table->integer('parent_id')->unsigned()->nullable();
             $table->foreign('parent_id')->references('id')->on('order_items')->onDelete('cascade');
 
-            $table->json('additional')->nullable();
+            // $table->json('additional')->nullable();
+            $table->text('additional')->nullable();
             $table->timestamps();
         });
     }

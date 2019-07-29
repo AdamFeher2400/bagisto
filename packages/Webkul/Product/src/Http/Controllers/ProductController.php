@@ -10,6 +10,7 @@ use Webkul\Product\Repositories\ProductRepository as Product;
 use Webkul\Product\Repositories\ProductAttributeValueRepository as ProductAttributeValue;
 use Webkul\Attribute\Repositories\AttributeFamilyRepository as AttributeFamily;
 use Webkul\Category\Repositories\CategoryRepository as Category;
+use Webkul\Car\Repositories\CarRepository as Car;
 use Webkul\Inventory\Repositories\InventorySourceRepository as InventorySource;
 use Illuminate\Support\Facades\Storage;
 
@@ -43,6 +44,13 @@ class ProductController extends Controller
     protected $category;
 
     /**
+     * CarRepository object
+     *
+     * @var array
+     */
+    protected $car;
+
+    /**
      * InventorySourceRepository object
      *
      * @var array
@@ -68,6 +76,7 @@ class ProductController extends Controller
      *
      * @param  \Webkul\Attribute\Repositories\AttributeFamilyRepository     $attributeFamily
      * @param  \Webkul\Category\Repositories\CategoryRepository             $category
+     * @param  \Webkul\Car\Repositories\CarRepository                       $car
      * @param  \Webkul\Inventory\Repositories\InventorySourceRepository     $inventorySource
      * @param  \Webkul\Product\Repositories\ProductRepository               $product
      * @param  \Webkul\Product\Repositories\ProductAttributeValueRepository $productAttributeValue
@@ -76,6 +85,7 @@ class ProductController extends Controller
     public function __construct(
         AttributeFamily $attributeFamily,
         Category $category,
+        Car $car,
         InventorySource $inventorySource,
         Product $product,
         ProductAttributeValue $productAttributeValue
@@ -84,6 +94,8 @@ class ProductController extends Controller
         $this->attributeFamily = $attributeFamily;
 
         $this->category = $category;
+
+        $this->car = $car;
 
         $this->inventorySource = $inventorySource;
 
@@ -164,9 +176,11 @@ class ProductController extends Controller
 
         $categories = $this->category->getCategoryTree();
 
+        $cars = $this->car->getCarTree();
+
         $inventorySources = $this->inventorySource->all();
 
-        return view($this->_config['view'], compact('product', 'categories', 'inventorySources'));
+        return view($this->_config['view'], compact('product', 'categories', 'cars', 'inventorySources'));
     }
 
     /**

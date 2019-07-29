@@ -51,16 +51,22 @@ return [
         'sort' => 2,
         'icon-class' => '',
     ], [
+        'key' => 'catalog.cars',
+        'name' => 'admin::app.layouts.cars',
+        'route' => 'admin.catalog.cars.index',
+        'sort' => 3,
+        'icon-class' => '',
+    ], [
         'key' => 'catalog.attributes',
         'name' => 'admin::app.layouts.attributes',
         'route' => 'admin.catalog.attributes.index',
-        'sort' => 3,
+        'sort' => 4,
         'icon-class' => '',
     ], [
         'key' => 'catalog.families',
         'name' => 'admin::app.layouts.attribute-families',
         'route' => 'admin.catalog.families.index',
-        'sort' => 4,
+        'sort' => 5,
         'icon-class' => '',
     ], [
         'key' => 'customers',
@@ -187,6 +193,54 @@ return [
         'name' => 'admin::app.promotion.cart-rule',
         'route' => 'admin.cart-rule.index',
         'sort' => 1,
+        'icon-class' => '',
+    ], [
+        'key' => 'appsettings',
+        'name' => 'admin::app.layouts.appsettings',
+        'route' => 'admin.banner.index',
+        'sort' => 6,
+        'icon-class' => 'appsettings-icon',
+    ], [
+        'key' => 'appsettings.banner',
+        'name' => 'admin::app.layouts.banner',
+        'route' => 'admin.banner.index',
+        'sort' => 1,
+        'icon-class' => '',
+    ], [
+        'key' => 'appsettings.news',
+        'name' => 'admin::app.layouts.news',
+        'route' => 'admin.news.index',
+        'sort' => 2,
+        'icon-class' => '',
+    ], [
+        'key' => 'appsettings.essegroup',
+        'name' => 'admin::app.layouts.essegroup',
+        'route' => 'admin.essegroup.index',
+        'sort' => 3,
+        'icon-class' => '',
+    ], [
+        'key' => 'appsettings.techservice',
+        'name' => 'admin::app.layouts.techservice',
+        'route' => 'admin.techservice.index',
+        'sort' => 4,
+        'icon-class' => '',
+    ], [
+        'key' => 'appsettings.prodtechservice',
+        'name' => 'admin::app.layouts.prodtechservice',
+        'route' => 'admin.prodtechservice.index',
+        'sort' => 5,
+        'icon-class' => '',
+    ], [
+        'key' => 'appsettings.payment',
+        'name' => 'admin::app.layouts.payment',
+        'route' => 'admin.payment.index',
+        'sort' => 6,
+        'icon-class' => '',
+    ], [
+        'key' => 'appsettings.contact',
+        'name' => 'admin::app.layouts.contact',
+        'route' => 'admin.contact.index',
+        'sort' => 7,
         'icon-class' => '',
     ]
 ];

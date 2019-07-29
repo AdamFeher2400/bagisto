@@ -7,6 +7,19 @@ Route::group(['prefix' => 'api'], function ($router) {
         Route::get('switch-currency', 'CoreController@switchCurrency');
 
         Route::get('switch-locale', 'CoreController@switchLocale');
+
+
+        //Banner routes
+        Route::get('banners', 'ResourceController@index')->defaults('_config', [
+            'repository' => 'Webkul\Core\Repositories\BannerRepository',
+            'resource' => 'Webkul\API\Http\Resources\Core\Banner'
+        ]);
+
+        //Car routes
+        Route::get('cars', 'ResourceController@index')->defaults('_config', [
+            'repository' => 'Webkul\Car\Repositories\CarRepository',
+            'resource' => 'Webkul\API\Http\Resources\Catalog\Car'
+        ]);
         
         
         //Category routes
