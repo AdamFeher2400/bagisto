@@ -95,6 +95,10 @@ Route::group(['prefix' => 'api'], function ($router) {
 
         Route::get('products/{id}', 'ProductController@get');
 
+        Route::get('product-link/{id}', 'Productcontroller@link');
+
+        Route::get('product-list', 'Productcontroller@getAll');
+
         Route::get('product-additional-information/{id}', 'ProductController@additionalInformation');
 
         Route::get('product-configurable-config/{id}', 'ProductController@configurableConfig');

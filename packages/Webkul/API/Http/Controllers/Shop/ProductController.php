@@ -56,6 +56,30 @@ class ProductController extends Controller
     }
 
     /**
+     * Returns product's link.
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function link($id)
+    {
+        return response()->json([
+            'data' => $this->productRepository->getRelatedProducts($id)
+        ]);
+    }
+
+    /**
+     * Returns product list
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function getAll()
+    {
+        return response()->json([
+            'data' => $this->productRepository->getAll(request()->input('category_id'), request()->input('type'))
+        ]);
+    }
+
+    /**
      * Returns product's additional information.
      *
      * @return \Illuminate\Http\Response

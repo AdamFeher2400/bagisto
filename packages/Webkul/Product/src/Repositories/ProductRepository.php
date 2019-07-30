@@ -444,14 +444,32 @@ class ProductRepository extends Repository
     }
 
     /**
+     * @param integer $id
+     * @return Collection
+     */
+    public function getRelatedProducts($id)
+    {
+        $results = app('Webkul\Product\Repositories\ProductFlatRepository')->scopeQuery(function($query) use($id) {
+            $qb = $query->leftJoin('product_relations as pr', 'product_flat.product_id', '=', 'pr.child_id')
+                        ->leftJoin('product_images as pi','product_flat.product_id', '=', 'pi.product_id')
+                        ->select('product_flat.*')
+                        ->addSelect('pi.path')
+                        ->where('pr.parent_id', $id);
+            return $qb->limit(4);
+        })->paginate(4);
+        return $results;
+    }
+
+
+    /**
      * @param integer $categoryId
      * @return Collection
      */
-    public function getAll($categoryId = null)
+    public function getAll($categoryId = null, $type = 0)
     {
         $params = request()->input();
 
-        $results = app('Webkul\Product\Repositories\ProductFlatRepository')->scopeQuery(function($query) use($params, $categoryId) {
+        $results = app('Webkul\Product\Repositories\ProductFlatRepository')->scopeQuery(function($query) use($params, $categoryId, $type) {
                 $channel = request()->get('channel') ?: (core()->getCurrentChannelCode() ?: core()->getDefaultChannelCode());
 
                 $locale = request()->get('locale') ?: app()->getLocale();
@@ -463,13 +481,18 @@ class ProductRepository extends Repository
                             AND NOW( ) <= product_flat.special_price_to, IF( product_flat.special_price IS NULL OR product_flat.special_price = 0 , product_flat.price, LEAST( product_flat.special_price, product_flat.price ) ) , product_flat.price ) , IF( product_flat.special_price_from IS NULL , IF( product_flat.special_price_to IS NULL , IF( product_flat.special_price IS NULL OR product_flat.special_price = 0 , product_flat.price, LEAST( product_flat.special_price, product_flat.price ) ) , IF( NOW( ) <= product_flat.special_price_to, IF( product_flat.special_price IS NULL OR product_flat.special_price = 0 , product_flat.price, LEAST( product_flat.special_price, product_flat.price ) ) , product_flat.price ) ) , IF( product_flat.special_price_to IS NULL , IF( NOW( ) >= product_flat.special_price_from, IF( product_flat.special_price IS NULL OR product_flat.special_price = 0 , product_flat.price, LEAST( product_flat.special_price, product_flat.price ) ) , product_flat.price ) , product_flat.price ) ) ) AS final_price'))
 
                         ->leftJoin('products', 'product_flat.product_id', '=', 'products.id')
-                        ->leftJoin('product_categories', 'products.id', '=', 'product_categories.product_id')
                         ->where('product_flat.channel', $channel)
                         ->where('product_flat.locale', $locale)
                         ->whereNotNull('product_flat.url_key');
 
                 if ($categoryId) {
-                    $qb->where('product_categories.category_id', $categoryId);
+                    if($type == 0) {
+                        $qb->leftJoin('product_categories', 'products.id', '=', 'product_categories.product_id');
+                        $qb->where('product_categories.category_id', $categoryId);  
+                    } else {
+                        $qb->leftJoin('product_cars', 'products.id', '=', 'product_cars.product_id');
+                        $qb->where('product_cars.car_id', $categoryId);  
+                    }
                 }
 
                 if (is_null(request()->input('status'))) {
